@@ -1,0 +1,34 @@
+/* Nav */
+
+.nav {
+    grid-area: n;
+}
+
+.item {
+    color: var(--text-sub-color);
+}
+
+.item a {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-sub-color);
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 20px 25px;
+    border-radius: var(--border-radius-default);
+    transition: background-color .3s ease-in-out;
+}
+
+.item a span {
+    margin-left: 10px;
+}
+
+.item a.active {
+    background-color: var(--dark-grey-color);
+}
+
+.item a:hover {
+    background-color: var(--dark-grey-color);
+}
