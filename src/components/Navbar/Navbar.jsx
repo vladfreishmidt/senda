@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Navbar.module.css';
-import { MdPerson } from "react-icons/md";
+import { MdPerson, MdMarkunread, MdSort, MdMusicNote, MdSettings } from "react-icons/md";
 
 const Navbar = () => {
    return (
@@ -12,16 +12,28 @@ const Navbar = () => {
             </a>
          </div>
          <div className={s.item}>
-            <a href="/dialogs">Messages</a>
+            <a href="/dialogs">
+               <MdMarkunread />
+               <span>Messages</span>
+            </a>
          </div>
          <div className={s.item}>
-            <a href="/news">News</a>
+            <a href="/news">
+               <MdSort />
+               <span>News</span>
+            </a>
          </div>
          <div  className={s.item}>
-            <a href="/music">Music</a>
+            <a href="/music">
+               <MdMusicNote />
+               <span>Music</span>
+            </a>
          </div>
          <div className={s.item}>
-            <a href="/settings">Settings</a>
+            <a href="/settings">
+               <MdSettings />
+               <span>Settings</span>
+            </a>
          </div>
       </nav>
    );

@@ -1,5 +1,8 @@
 /* COLORS */
 :root {
+    --primary-color: #0E86D4;
+    --secondary-color: #68BBE3;
+
     --body-color: #f6f9fb;
     --text-color: #171725;
     --text-sub-color: #92929d;
@@ -9,6 +12,7 @@
     --main-content-bg-color: #f6f6f7;
 
     --border-radius-default: 3px;
+    --font-family-default: sans-serif;
 }
 
 *, *::before, *::after {

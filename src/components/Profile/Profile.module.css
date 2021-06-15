@@ -1,0 +1,36 @@
+/* Content */
+
+.content {
+    grid-area: c;
+    background-color: var(--main-content-bg-color);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    overflow: scroll;
+    height: calc(100vh - 80px);
+}
+
+.profileInfo {
+    display: flex;
+    padding: 20px;
+    color: var(--text-sub-color);
+}
+
+.avatar {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.coverWrapper {
+    margin-right: 20px;
+}
+
+.cover {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+}
+
