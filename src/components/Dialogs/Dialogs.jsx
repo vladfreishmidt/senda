@@ -1,13 +1,14 @@
 import React from 'react';
-import {MdSend} from 'react-icons/md';
+import { MdSend } from 'react-icons/md';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import s from "./Dialogs.module.css";
 
 
-const Dialogs = (props) => {
+const Dialogs = ({ dialogsPage }) => {
 
-   const dialogsElements = props.dialogsData.map(dialog => {
+   // Mapping DialogsItem components
+   const dialogsElements = dialogsPage.dialogs.map(dialog => {
       return (
          <DialogItem
             key={dialog.id}
@@ -17,7 +18,8 @@ const Dialogs = (props) => {
       );
    });
 
-   const messagesElements = props.messagesData.map(message => {
+   // Mapping messagesElements components
+   const messagesElements = dialogsPage.messages.map(message => {
       return (
          <Message
             key={message.id}
@@ -41,7 +43,7 @@ const Dialogs = (props) => {
 
             </div>
             <div className={s.newMessage}>
-               <textarea placeholder="Type message here.."></textarea>
+               <textarea placeholder="Type message here.."/>
                <button className={s.btn}>
                   <span>Send</span>
                   <MdSend/>
