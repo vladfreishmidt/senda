@@ -1,39 +1,41 @@
 import React from 'react';
-import s from './Navbar.module.css';
+import {NavLink} from "react-router-dom";
 import { MdPerson, MdMarkunread, MdSort, MdMusicNote, MdSettings } from "react-icons/md";
+import s from './Navbar.module.css';
+
 
 const Navbar = () => {
    return (
       <nav className={s.nav}>
          <div className={s.item}>
-            <a href="/" className={s.active}>
+            <NavLink to="/profile" activeClassName={s.active}>
                <MdPerson />
                <span>Profile</span>
-            </a>
+            </NavLink>
          </div>
          <div className={s.item}>
-            <a href="/dialogs">
+            <NavLink to="/dialogs" activeClassName={s.active}>
                <MdMarkunread />
                <span>Messages</span>
-            </a>
+            </NavLink>
          </div>
          <div className={s.item}>
-            <a href="/news">
+            <NavLink to="/news" activeClassName={s.active}>
                <MdSort />
                <span>News</span>
-            </a>
+            </NavLink>
          </div>
          <div  className={s.item}>
-            <a href="/music">
+            <NavLink to="/music" activeClassName={s.active}>
                <MdMusicNote />
                <span>Music</span>
-            </a>
+            </NavLink>
          </div>
          <div className={s.item}>
-            <a href="/settings">
+            <NavLink to="/settings" activeClassName={s.active}>
                <MdSettings />
                <span>Settings</span>
-            </a>
+            </NavLink>
          </div>
       </nav>
    );

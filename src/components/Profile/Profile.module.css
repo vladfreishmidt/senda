@@ -1,17 +1,18 @@
-/* Content */
-
-.content {
-    grid-area: c;
-    background-color: var(--main-content-bg-color);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    overflow: scroll;
-    height: calc(100vh - 80px);
-}
 
 .profileInfo {
     display: flex;
     padding: 20px;
     color: var(--text-sub-color);
+}
+
+.profileName {
+    color: var(--text-color);
+    margin: 0 0 15px 0;
+}
+
+.infoText {
+    margin-bottom: 10px;
+    font-weight: 300;
 }
 
 .avatar {

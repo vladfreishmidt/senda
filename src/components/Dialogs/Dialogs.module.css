@@ -1,0 +1,104 @@
+
+
+.dialogsWrapper {
+    display: flex;
+    height: 100%;
+    padding: 10px;
+
+}
+
+
+.dialogs {
+    width: 25%;
+    margin-right: 10px;
+}
+
+.dialogsItem {
+    padding: 20px 25px;
+}
+
+.dialogsItem.active {
+    background-color: var(--dark-grey-color);
+}
+
+.dialogMessages {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
+
+.messages {
+    padding: 20px;
+    height: 80%;
+}
+
+.messagesItem {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.messagesItem.own{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.messagesItem.own .messageBody{
+    background-color: #F652A0;
+}
+
+.messageBody {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    color: #fff;
+    font-size: 15px;
+    max-width: 50%;
+    border-radius: 30px;
+}
+
+.messagesItem:not(:last-child) .messageBody {
+    margin-bottom: 20px;
+}
+
+.newMessage {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--dark-grey-color);
+    height: 20%;
+}
+
+.newMessage textarea {
+    resize: none;
+    border: none;
+    display: block;
+    color: var(--text-color);
+    width: 90%;
+    height: 80px;
+    padding: 20px;
+    margin-right: 10px;
+    background-color: transparent;
+    border-radius: var(--border-radius-default);
+    font-family: var(--font-family-default);
+    font-size: 18px;
+}
+
+
+.newMessage .btn {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: var(--border-radius-default);
+    transition: background-color .3s ease;
+    cursor:pointer;
+}
+
+.newMessage .btn span {
+    margin-right: 5px;
+}

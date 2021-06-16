@@ -13,6 +13,9 @@
 
     --border-radius-default: 3px;
     --font-family-default: sans-serif;
+
+    --font-text: 'Lato', sans-serif;
+    --font-main: 'Open Sans', sans-serif;
 }
 
 *, *::before, *::after {
@@ -25,13 +28,15 @@ img {
 
 body {
     background-color: var(--body-color);
-    font-family: sans-serif;
+    font-family: var(--font-main);
+    font-weight: 400;
 }
 
 /* App */
 
 .app-wrapper {
     max-width: 1200px;
+    height: 100vh;
     margin: 0 auto;
     display: grid;
     grid-template-rows: 60px 1fr;
@@ -40,6 +45,14 @@ body {
     grid-template-areas:
         "h h"
         "n c";
+}
+
+.app-content {
+    grid-area: c;
+    background-color: var(--main-content-bg-color);
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    overflow: scroll;
+    height: calc(100vh - 80px);
 }
 
 
