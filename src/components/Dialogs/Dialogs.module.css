@@ -13,11 +13,16 @@
     margin-right: 10px;
 }
 
-.dialogsItem {
+.dialogsItem a {
+    color: var(--text-light-color);
+    display: block;
     padding: 20px 25px;
+    font-weight: 400;
+    text-decoration: none;
 }
 
-.dialogsItem.active {
+.dialogsItem a.active {
+    color: var(--text-sub-color);
     background-color: var(--dark-grey-color);
 }
 
@@ -34,20 +39,20 @@
 
 .messagesItem {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .messagesItem.own{
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
 }
 
 .messagesItem.own .messageBody{
-    background-color: #F652A0;
+    background-color: var(--secondary-color);
 }
 
 .messageBody {
-    background-color: var(--secondary-color);
+    background-color: #F652A0;
     padding: 20px;
     color: #fff;
     font-size: 15px;
@@ -97,6 +102,10 @@
     border-radius: var(--border-radius-default);
     transition: background-color .3s ease;
     cursor:pointer;
+}
+
+.newMessage .btn:hover {
+    background-color: var(--secondary-color);
 }
 
 .newMessage .btn span {
