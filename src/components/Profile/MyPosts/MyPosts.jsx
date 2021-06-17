@@ -18,20 +18,37 @@ const MyPosts = (props) => {
          );
       });
 
+   // createRef
+   let newPostElement = React.createRef();
+
+   // Event handlers
+   const addPost = () => {
+      let text = newPostElement.current.value;
+      props.addPost(text);
+
+      newPostElement.current.value = "";
+   }
+
    return (
       <div className={s.posts}>
+
+         {/* New Post */}
+
          <div className={s.newPost}>
-            <textarea placeholder="What's on your mind?"/>
+            <textarea ref={newPostElement} placeholder="What's on your mind?"/>
             <div className={s.btnWrapper}>
-               <button className={s.btn}>
+               <button className={s.btn} onClick={ addPost }>
                   <MdCreate />
                   <span>Add post</span>
                </button>
             </div>
          </div>
+
+         {/* Posts */}
+
          <div className={s.postsList}>
 
-            { postsElements }
+            { postsElements.reverse() }
 
          </div>
       </div>

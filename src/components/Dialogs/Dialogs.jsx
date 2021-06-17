@@ -29,22 +29,42 @@ const Dialogs = ({ dialogsPage }) => {
       );
    });
 
+   // createRef
+   let newMessageElement = React.createRef();
+
+   // Event handlers
+   const addMessage = () => {
+      let text = newMessageElement.current.value;
+      alert(text);
+      newMessageElement.current.value = "";
+   }
+
+
    return (
       <div className={s.dialogsWrapper}>
+
+         {/* Dialogs */}
+
          <div className={s.dialogs}>
 
             { dialogsElements }
 
          </div>
          <div className={s.dialogMessages}>
+
+            {/* Messages */}
+
             <div className={s.messages}>
 
                { messagesElements }
 
             </div>
+
+            {/* Add new Message */}
+
             <div className={s.newMessage}>
-               <textarea placeholder="Type message here.."/>
-               <button className={s.btn}>
+               <textarea ref={newMessageElement} placeholder="Type message here.."/>
+               <button className={s.btn} onClick={ addMessage }>
                   <span>Send</span>
                   <MdSend/>
                </button>

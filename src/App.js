@@ -7,7 +7,7 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import './App.css';
 
-const App = ({state}) => {
+const App = ({state, addPost}) => {
    return (
       <div className="app-wrapper">
          <Header/>
@@ -15,7 +15,7 @@ const App = ({state}) => {
          <main className="app-content">
 
             <Route path="/profile">
-               <Profile profilePage={state.profilePage}/>
+               <Profile profilePage={state.profilePage} addPost={addPost}/>
             </Route>
 
             <Route path="/dialogs">
