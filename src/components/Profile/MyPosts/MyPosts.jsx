@@ -6,6 +6,7 @@ import Post from "./Post/Post";
 const MyPosts = (props) => {
 
    // mapping Post component
+
    const postsElements = props.postsData.map(post => {
          return (
             <Post
@@ -18,16 +19,25 @@ const MyPosts = (props) => {
          );
       });
 
+
    // createRef
+
    let newPostElement = React.createRef();
 
-   // Event handlers
-   const addPost = () => {
-      let text = newPostElement.current.value;
-      props.addPost(text);
 
-      newPostElement.current.value = "";
+   // Event handlers
+
+   const addPost = () => {
+      props.dispatch({type: 'ADD-POST'});
    }
+
+   const onPostChange = () => {
+      let text = newPostElement.current.value;
+      let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+
+      props.dispatch(action);
+   }
+
 
    return (
       <div className={s.posts}>
@@ -35,7 +45,12 @@ const MyPosts = (props) => {
          {/* New Post */}
 
          <div className={s.newPost}>
-            <textarea ref={newPostElement} placeholder="What's on your mind?"/>
+            <textarea
+               ref={newPostElement}
+               onChange={ onPostChange }
+               value={props.newPostText}
+               placeholder="What's on your mind?"
+            />
             <div className={s.btnWrapper}>
                <button className={s.btn} onClick={ addPost }>
                   <MdCreate />

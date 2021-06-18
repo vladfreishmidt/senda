@@ -7,7 +7,7 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import './App.css';
 
-const App = ({state, addPost}) => {
+const App = ({state, dispatch, updateNewPostText, addMessage, updateMessageText}) => {
    return (
       <div className="app-wrapper">
          <Header/>
@@ -15,11 +15,11 @@ const App = ({state, addPost}) => {
          <main className="app-content">
 
             <Route path="/profile">
-               <Profile profilePage={state.profilePage} addPost={addPost}/>
+               <Profile profilePage={state.profilePage} dispatch={dispatch} updateNewPostText={updateNewPostText} />
             </Route>
 
             <Route path="/dialogs">
-               <Dialogs dialogsPage={state.dialogsPage}/>
+               <Dialogs dialogsPage={state.dialogsPage} dispatch={dispatch} />
             </Route>
 
             <Route path="/news" component={News}/>

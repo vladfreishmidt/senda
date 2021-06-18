@@ -10,7 +10,7 @@ const Post = (props) => {
             <h6 className={s.author}>{props.author}</h6>
          </header>
          <main className={s.content}>
-            {props.content}
+            <p>{props.content}</p>
          </main>
          <footer>
             <div className={s.likesCount}>

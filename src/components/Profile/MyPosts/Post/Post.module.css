@@ -25,7 +25,13 @@
 
 .item .content {
     margin: 20px 0;
+}
+
+.item .content p {
     font-family: var(--font-text);
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+    font-size: 18px;
 }
 
 .item footer {

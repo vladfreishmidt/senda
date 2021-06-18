@@ -5,21 +5,23 @@ import Message from "./Message/Message";
 import s from "./Dialogs.module.css";
 
 
-const Dialogs = ({ dialogsPage }) => {
+const Dialogs = (props) => {
 
    // Mapping DialogsItem components
-   const dialogsElements = dialogsPage.dialogs.map(dialog => {
+   const dialogsElements = props.dialogsPage.dialogs.map(dialog => {
       return (
          <DialogItem
             key={dialog.id}
             name={dialog.name}
+            avatar={dialog.avatar}
             id={dialog.id}
+            isUnread={dialog.isUnread}
          />
       );
    });
 
    // Mapping messagesElements components
-   const messagesElements = dialogsPage.messages.map(message => {
+   const messagesElements = props.dialogsPage.messages.map(message => {
       return (
          <Message
             key={message.id}
@@ -31,13 +33,32 @@ const Dialogs = ({ dialogsPage }) => {
 
    // createRef
    let newMessageElement = React.createRef();
+   let chatBox = React.createRef();
+
+   const scrollToBottom = () => {
+      chatBox.current.scrollIntoView({ behavior: "smooth", block: "end" });
+   }
 
    // Event handlers
-   const addMessage = () => {
+   const addNewMessage = () => {
+
       let text = newMessageElement.current.value;
-      alert(text);
+      let action = {type: 'ADD-MESSAGE', newText: text};
+
+      props.dispatch(action);
+
+      scrollToBottom();
+
       newMessageElement.current.value = "";
    }
+
+   const onMessageChange = () => {
+
+      let text = newMessageElement.current.value;
+      props.dispatch({type: 'UPDATE-MESSAGE-TEXT', newText: text});
+   }
+
+
 
 
    return (
@@ -54,17 +75,23 @@ const Dialogs = ({ dialogsPage }) => {
 
             {/* Messages */}
 
-            <div className={s.messages}>
+            <div  className={s.messages}>
 
                { messagesElements }
+
+               <div
+                  ref={chatBox}
+                  className="chatBoxBottom"
+                  style={{height: '20px', position: 'relative', background: 'transparent', bottom: '-50px'}}
+               />
 
             </div>
 
             {/* Add new Message */}
 
             <div className={s.newMessage}>
-               <textarea ref={newMessageElement} placeholder="Type message here.."/>
-               <button className={s.btn} onClick={ addMessage }>
+               <textarea ref={newMessageElement} onChange={ onMessageChange } value={props.dialogsPage.newMessageText} placeholder="Type message here.."/>
+               <button className={s.btn} onClick={ addNewMessage }>
                   <span>Send</span>
                   <MdSend/>
                </button>
