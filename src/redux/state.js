@@ -1,3 +1,8 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
+
 let store = {
 
    _state: {
@@ -138,46 +143,18 @@ let store = {
    },
 
    dispatch(action) {
-      if (action.type === 'ADD-POST') {
 
-         let newPost = {
-            id: 5,
-            author: "Unknown name placeholder",
-            avatar: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.OesLvyzDO6AvU_hYUAT4IAHaHa%26pid%3DApi&f=1",
-            content: this._state.profilePage.newPostText,
-            likesCount: 0
-         }
+      this._state.profilePage = profileReducer(this._state.profilePage, action);
+      this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+      this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
-         this._state.profilePage.posts.push(newPost);
+      this._callSubscriber(this._state);
 
-         this._state.profilePage.newPostText = "";
-
-         this._callSubscriber(this._state);
-
-      } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-
-         this._state.profilePage.newPostText = action.newText;
-
-         this._callSubscriber(this._state);
-      } else if (action.type === 'ADD-MESSAGE') {
-         let message = {
-            id: 10,
-            text: action.newText,
-            isOwn: true
-         };
-         this._state.dialogsPage.messages.push(message);
-         this._state.dialogsPage.newMessageText = "";
-
-         this._callSubscriber(this._state);
-      } else if (action.type === 'UPDATE-MESSAGE-TEXT') {
-         this._state.dialogsPage.newMessageText = action.newText;
-
-         this._callSubscriber(this._state);
-      }
-   },
+   }
+};
 
 
-}
+
 
 
 export default store;

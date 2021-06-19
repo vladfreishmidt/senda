@@ -36,7 +36,7 @@ const Dialogs = (props) => {
    let chatBox = React.createRef();
 
    const scrollToBottom = () => {
-      chatBox.current.scrollIntoView({ behavior: "smooth", block: "end" });
+      chatBox.current.scrollIntoView({ behavior: "smooth", block: "start" });
    }
 
    // Event handlers
@@ -53,12 +53,11 @@ const Dialogs = (props) => {
    }
 
    const onMessageChange = () => {
-
       let text = newMessageElement.current.value;
-      props.dispatch({type: 'UPDATE-MESSAGE-TEXT', newText: text});
+      let action = {type: 'UPDATE-MESSAGE-TEXT', newText: text};
+
+      props.dispatch(action);
    }
-
-
 
 
    return (
@@ -82,7 +81,7 @@ const Dialogs = (props) => {
                <div
                   ref={chatBox}
                   className="chatBoxBottom"
-                  style={{height: '20px', position: 'relative', background: 'transparent', bottom: '-50px'}}
+                  style={{height: '50px', position: 'relative', background: 'transparent', bottom: '0'}}
                />
 
             </div>
@@ -90,7 +89,12 @@ const Dialogs = (props) => {
             {/* Add new Message */}
 
             <div className={s.newMessage}>
-               <textarea ref={newMessageElement} onChange={ onMessageChange } value={props.dialogsPage.newMessageText} placeholder="Type message here.."/>
+               <textarea
+                  ref={newMessageElement}
+                  onChange={ onMessageChange }
+                  value={props.dialogsPage.newMessageText}
+                  placeholder="Type message here.."
+               />
                <button className={s.btn} onClick={ addNewMessage }>
                   <span>Send</span>
                   <MdSend/>

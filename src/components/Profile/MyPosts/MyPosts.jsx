@@ -2,11 +2,12 @@ import React from 'react';
 import s from './MyPosts.module.css'
 import {MdCreate} from "react-icons/md";
 import Post from "./Post/Post";
+import {addPostActionCreator, updateNewPostText} from "../../../redux/profile-reducer";
+
 
 const MyPosts = (props) => {
 
-   // mapping Post component
-
+   // Mapping Post component
    const postsElements = props.postsData.map(post => {
          return (
             <Post
@@ -28,12 +29,12 @@ const MyPosts = (props) => {
    // Event handlers
 
    const addPost = () => {
-      props.dispatch({type: 'ADD-POST'});
+      props.dispatch(addPostActionCreator());
    }
 
    const onPostChange = () => {
       let text = newPostElement.current.value;
-      let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+      let action = updateNewPostText(text);
 
       props.dispatch(action);
    }
